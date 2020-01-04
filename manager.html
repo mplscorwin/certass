@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>Cert Assessment - Test Manager</title>
+  <link rel="stylesheet" href="manager.css" />
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="manager.js"></script>
+</head>
+<body>
+  <form id="managerForm" method="POST">
+    <input type="hidden" name="t" id="t" value="$test" />
+	<input type="hidden" name="index" id="index" />
+    <h1>Cert Assessment - Test Manager</h1>
+    <div id="tabs"><div id="listTab" class="tab">List</div><div id="crudTab" class="tab">Editor</div></div>
+    <div id="crud">
+      <h2>All answer fields are required. Don't forget to mark the correct one!</h2>
+      <label>Question</label><textarea rows="5" cols="40" id="q" name="q"></textarea><br />
+      <label>A1<input class="crud-radio" type="radio" value="1" id="c1" name="c"></label><textarea rows="2" cols="40" id="a1" name="a1"></textarea><br />
+      <label>A2<input class="crud-radio" type="radio" value="2" id="c2" name="c"></label><textarea rows="2" cols="40" id="a2" name="a2"></textarea><br />
+      <label>A3<input class="crud-radio" type="radio" value="3" id="c3" name="c"></label><textarea rows="2" cols="40" id="a3" name="a3"></textarea><br />
+      <label>A4<input class="crud-radio" type="radio" value="4" id="c4" name="c"></label><textarea rows="2" cols="40" id="a4" name="a4"></textarea><br />
+      <span id="fifth"><label>A5<input class="crud-radio" type="radio" value="5" id="c5" name="c"></label><textarea rows="2" cols="40" id="a5" name="a5"></textarea><br /></span>
+      <label>Allow Multiple Correct Answers</label><input type="checkbox" id="multi" name="multi" value="1" />
+      <input type="button" id="submit" name="SUBMIT" value="CREATE" />
+      <input type="button" id="delete" name="DELETE" value="DELETE" style="display:none" />
+      <input type="reset" id="reset" name="RESET" value="CLEAR" />
+		<div id="log" class="log">
+			
+		</div>
+    </div>
+    <div id="list">
+      <h2>Use the filter fields to view only the questions that contain the text entered, or to limit the list to only questions having multiple correct answers.</h2>
+      <div id="filter">
+	<label>#: <input type="text" id="fix" name="fix" size="4"/></label>
+	<label>Question: <input type="text" id="fq" name="fq" /></label>
+	<label>Answers: <input type="text" id="fa" name="fa" /></label>
+	<label>Muli: <input type="checkbox" id="fmulti" name="fmulti" value="1" /></label>
+	<input type="button" id="fapply" name="fapply" value="Apply" />
+	<input type="button" id="fclear" name="fclear" value="Reset" />
+      </div>
+      <div id="results" />
+    </div>
+  </form>
+</body>
+</html>

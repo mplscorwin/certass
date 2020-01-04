@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Certification Assessment</title>
+<script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="jquery.simple.timer.js"></script>
+<script type="text/javascript" src="test.js"></script>
+<style type="text/css">
+ @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+ @import url('https://fonts.googleapis.com/css?family=Anton|Raleway&display=swap');
+ body { 
+   margin-left: 10%; 
+   margin-right: 10%; 
+   margin-top: 100px; 
+   padding: 20px;
+   font-family: "Raleway", Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 1.5em ;
+   color:#777;
+   font-weight:50;
+ }
+ #current { margin-bottom: 64px; }
+ input {
+   font-family: "Raleway", Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+   font-size: 1.25em ;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   width: 100%;
+   margin: 25px;
+ }
+ #header {
+   position: fixed;
+   color: #444;
+   top: 0;
+   left: 0;
+   right: 0;
+   margin-left: 25px;
+   margin-top: 25px;
+   margin-bottom: 25px;
+   min-height: 50px;
+   width: 100%;
+   background-color: #999;
+ }
+ #header,#footer,#progress,#results {
+   font-weight: 50;
+   padding: 20px;
+   font-size: 1.5em;
+   font-family: 'Anton', Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+ }
+ #test {
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   border-radius: 10px; /* future proofing */
+   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+   border: black 1px;
+   width: 80%;
+   padding-top: 50px;
+ }
+ #results { 
+   font-size: 2em;
+   color: black;
+ }
+ dl,dt,dd,#results {
+   line-height: 2rem;
+   letter-spacing: inherit;
+     width: 100%;
+   float:left;
+   clear:left; 
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   border-radius: 10px; /* future proofing */
+   -khtml-border-radius: 10px; /* for old Konqueror browsers */
+ }
+ dt,dd {
+   width: 100%;
+   background: #F1EDD1;
+   padding-left: 1.5em;
+   padding-right: .75em;
+   padding-top: .25em;
+   padding-bottom: .125em;
+ }
+ dd {
+   padding-left: 20px;
+   border: 1px solid #999;
+ }
+ dt { 
+   background: #E0D89B;
+ }
+ #current { width: 100%; }
+ dd,dt,.legend { 
+   color: black; 
+ }
+ dl dd:last-child {
+   margin-bottom: 80px;
+ }
+ dd.foo {width:100%; border-bottom:solid 1px #000; margin:0; margin-left:10px;}
+ .jst-hours { display: inline-block;}
+ .jst-minutes { display: inline-block;}
+ .jst-seconds { display: inline-block;}
+ .jst-clearDiv { clear: both; }
+ .jst-timeout { color: red;}
+ .chosen { background: #219AFF}
+ .reportChosen { background: #FF72C0}
+ .reportCorrect { background: #E4DD23}
+ .reportChosen.reportCorrect { background: #12FF00}
+ .legend { width: 20px; height: 20px }
+ dd:hover.currentAnswer { background: #E4DD23; }
+ dd:hover.chosen.currentAnswer { background: #091CF1; }
+ #count::before, #time::before, #results::before {
+   color: #444; 
+   font-size: .8em;
+   font-family: "Raleway";
+ }
+ #count::before  { content: "Question "; }
+ #time::before   { content: "Time Remaning: "; }
+ #results::before { content: "Final Result: "; }
+ .fiftyNinePercent { color: red; }
+ .seventyNinePercent { color: yellow; }
+ .eightyPercent { color: green; }
+</style>
+</head>
+	<!-- 
+	.reportDd, .reportDd:hover { background: transparent }
+	.reportChosen:hover { background: #FF72C0}
+	.reportCorrect:hover { background: #091CF1}
+	.reportChosen.reportCorrect:hover { background: #12FF00}
+	-->
+<body><form method="post" id="testform">
+	<div id="header" style="text-align:center;">
+		<img src="logo.png" width="121" height="50" alt="LOGO" align="left" />
+		<span id="testName"></span>
+		Certification Assessment
+	</div>
+  <div id="test">
+		<div id="progress" style="display:none">
+			<span id="count">[COUNT]</span>
+			<span id="time" data-minutes-left="90"></span>
+		</div>
+		<dl id="current" style="display:none">
+			<dt id="q">[QUESTION]</dt>
+			<dd id="a1" class="currentAnswer">[a1]</dd>
+			<dd id="a2" class="currentAnswer">[a2]</dd>
+			<dd id="a3" class="currentAnswer">[a3]</dd>
+			<dd id="a4" class="currentAnswer">[a4]</dd>
+			<dd id="a5" class="currentAnswer">[a5]</dd>
+		</dl>
+		<div id="results" style="display:none">
+		</div>
+		<div id="control">
+			<input type="button" id="next" name="next" value="Begin Assessment" />
+		</div>
+		<div id="reportDiv" style="display:none">
+			<div class="reportLegend">
+				<span class="legend reportCorrect">Correct Not Chosen</span>
+				<span class="legend reportChosen">Incorrect Chosen</span>
+				<span class="legend reportChosen reportCorrect">Correct</span>
+			</div>
+		</div>
+	</div>
+  <div id="footer">&nbsp;</div>
+</form></body>
+</html>

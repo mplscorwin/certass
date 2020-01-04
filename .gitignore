@@ -1,0 +1,10 @@
+
+# basic git ignore
+
+*~
+*-SAVE
+.arc
+.cache.php
+appdata/*.json
+logo.png
+*#

@@ -1,0 +1,27 @@
+body { 
+	color: #111;
+	padding: 40px;
+	padding-top: 5px;
+}
+dl:hover {
+	background: yellow;
+}
+.correctAnswer::before {
+	content: "&#x2714";
+}
+.incorrectAnswer::before {
+	content: "&#10060";
+}
+.tab { 
+	display: inline-block;
+	background: #8AF5FF;
+	border: 1px white solid;
+	padding: 6px;
+	margin: 0;
+}
+.tab.selected {
+	background: #1E167B;
+	color: white;
+}
+
+.logTime { margin-left: 1em; }

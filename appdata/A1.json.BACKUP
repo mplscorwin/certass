@@ -1,0 +1,28 @@
+{'q':'what is my name', 'c':2, 'a':['Jim','Corwin','Frank'] }
+{'q':'what is my name', 'c':2, 'a':[''] }
+{'q':'what is my name', 'c':2, 'a':[''] }
+{'q':'what is my name', 'c':2, 'a':[''] }
+{'q':'what is my name', 'c':2, 'a':[''] }
+{'q':'what is my name', 'c':2, 'a':[''] }
+{'q':'what is my name', 'c':2, 'a':['Jim','Corwin','Frank'] }
+{'q':'what is my name', 'c':3, 'a':['Bill','Jim','Corwin','Frank'] }
+{'q':'how old am I?', 'c':3, 'a':['25','30','35','50'] }
+{'q':'shit', 'c':3, 'a':['poop','dookey','caca','dodo'] }
+{'q':'asdf', 'c':, 'a':['asdf','asdf','asdf','asdf'] }
+{'q':'q', 'c':1 3 5, 'a':['A1','A2','A3','A4','a5'] }
+{'q':'a', 'c':1 3 5, 'a':['a1','a2','a3','a4','a5'] }
+{'q':'a', 'c':[1,3,5], 'a':['a1','a2','a3','a4','a5'] }
+{'q':'q', 'c':[1,3,5], 'a':['a1','a2','a3','a4','a5'] }
+{"q":"q", "c":[1,3,5], "a":["a1","a2","a3","a4","a5"] }
+{"q":"aasdf", "c":[2,4], "a":["q1","q2","q3","q4","q5"] }
+{"q":"asdf", "c":, "a":["pikjoh","asdf","asdf","asdfasdf"] }
+{"q":"asdf", "c":, "a":["pikjoh","asdf","asdf","asdfasdf"] }
+{"q":"asdfasdf", "c":, "a":["asdf","asdf","asdf","asdf"] }
+{"q":"asdfasdf", "c":, "a":["asdf","asdf","asdf","asdf"] }
+{"q":"asdfasdf", "c":, "a":["asdf","asdf","asdf","asdf"] }
+{"q":"asdfasdf", "c":, "a":["asdf","asdf","asdf","asdf"] }
+{"q":"asdfasdf", "c":, "a":["asdf","asdf","asdf","asdf"] }
+{"q":"asdfasdf", "c":3, "a":["asdf","asdf","asdf","asdf"] }
+{"q":"asdf", "c":1, "a":["asdfd","dfdf","awerawe","ret"] }
+{"q":"asdfasdf", "c":2,3,4, "a":["aqwerwer","nntrethds","sfgffgfg","sdfgfdg","sdgr5gdsfgg"] }
+{"q":"asdfasdf", "c":[2,3,4], "a":["aqwerwer","nntrethds","sfgffgfg","sdfgfdg","sdgr5gdsfgg"] }
