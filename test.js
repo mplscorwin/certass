@@ -15,7 +15,8 @@ $(document).ready(function() {
 		      a2: "A+ (1002)",
 		      n:  "N+ (N10-007)",
 		      s:  "S+ (SY0-501)" };
-    
+    var testSize;
+
     function drawReport() {
 	$('input:button').hide();
         var target = $("#reportDiv");
@@ -47,7 +48,7 @@ $(document).ready(function() {
         });
 	target.show();
     }
-    
+
     function drawResults() {
 
         //console.log(answerList);
@@ -85,11 +86,9 @@ $(document).ready(function() {
             var x = $(this).prop("id").match(/\d+/);
             chosen.push(parseInt(x[0]));
         });
-        //console.log(chosen);
-        //console.log(currentQuestion.data.c);
         var a = JSON.stringify(chosen);
         var b = JSON.stringify(currentQuestion.data.c);
-        console.log(a + ' == ' + b + ' => ' + (a == b).toString());
+        //console.log(a + ' == ' + b + ' => ' + (a == b).toString());
         if (a == b) {
             // correct answer!
         } else {
@@ -113,7 +112,7 @@ $(document).ready(function() {
         $btn = $('input:button');
         $btn.unbind('click');
         $btn.click(function() {
-            nextQuestion()
+            nextQuestion();
         });
         $btn.val('Submit Answer');
 	$('#progress').show();
@@ -128,17 +127,36 @@ $(document).ready(function() {
             $this.addClass('chosen');
     }
 
+    function selectQuestion() {
+	var i;
+	do {i = Math.floor(Math.random() * testSize);}
+	while(questionList.includes(i));
+	return i;
+    }
+
+    function getTestSize() {
+	var url = "test.pl?t=" + test.toUpperCase() + "&count=1&i=1";
+	//console.log( "getting: "+url);
+	$.ajax({ dataType: "json", url: url,
+		 success: function (data) {
+		     testSize = data;
+		     $('input').prop('disabled', false);
+		 },
+		 error: function(xhr, textStatus, errorThrown) {
+                     console.log('AJAX ERROR: ' + textStatus + " : " + errorThrown);
+		 }
+	       });
+    }
+
     function getQuestion() {
-        var url = "test.pl?t=" + test + "&history=" + questionList.join(',');
-        console.log("url: " + url);
+        var url = "test.pl?t=" + test.toUpperCase() + "&i=" + selectQuestion();
+        //console.log("url: " + url);
         $('dd').removeClass();
         $.ajax({
             dataType: "json",
             url: url,
             success: function(data) {
                 currentQuestion = data;
-                //console.log(data);
-                console.log(data.data.c);
                 questionList.push(data.index);
                 drawQuestion(data.data);
             },
@@ -164,7 +182,7 @@ $(document).ready(function() {
             isRunning = true;
             $('#time').startTimer({
                 onComplete: function(ele) {
-		    $('dd.chosen').each(function(){ $(this).removeClass('chosen')});
+		    $('dd.chosen').each(function(){ $(this).removeClass('chosen');});
 		    scoreQuestion();
                     drawResults();
                 }
@@ -177,20 +195,12 @@ $(document).ready(function() {
     $('dd.currentAnswer').click(function() {
         toggleSelected(this);
     });
+    $('input').prop('disabled', true);
     $('input').click(start);
 
     $('#testName').text( testNames[ test.toLowerCase() ]);
+
+    if(test) {
+	getTestSize();
+    }
 });
-
-/*
-
-	url,
-	   function( data) {
-	       // result is the next question
-	       currentQuestion = data;	
-	       // add this one to question list
-	       questionList.push( data.index );
-	       // UPDATE DISPLAY
-	       // TODO
-	   });
-*/
